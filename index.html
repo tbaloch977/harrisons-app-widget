@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Fee Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="switch-buttons">
+      <button id="switch-main" class="active" onclick="showCalculator('main')">Property Fee<br>Calculator</button>
+      <button id="switch-comparison" onclick="showCalculator('comparison')">Comparison<br>Calculator</button>
+    </div>
+
+    <!-- Property Fee Calculator -->
+    <div id="main-calculator">
+      <h1>Property Fee Calculator</h1>
+      <label for="price">Listing Price (£):</label>
+      <input type="number" id="price" placeholder="Enter listing price" />
+
+      <label for="option">Payment Option:</label>
+      <select id="option">
+        <option value="nsnf">No Sale No Fee</option>
+        <option value="part">Part Prepaid</option>
+        <option value="all">All Prepaid</option>
+      </select>
+
+      <div id="additionalGroup" style="display:none;">
+        <label for="additional">Additional Prepaid (£):</label>
+        <input type="number" id="additional" placeholder="Enter additional prepaid amount" />
+      </div>
+
+      <button onclick="calculateFees()">Calculate</button>
+
+      <div class="result" id="quoteResult">
+        <div id="output">Please enter values and click Calculate.</div>
+      </div>
+      <button onclick="downloadPDF()">💾 Save as PDF</button>
+    </div>
+
+    <!-- Comparison Calculator -->
+    <div id="comparison-calculator" class="hidden">
+      <h1>Comparison Calculator</h1>
+      <label for="propertyName">Property:</label>
+      <input type="text" id="propertyName" placeholder="e.g Property Name" />
+
+      <label for="askingPrice">Asking Price (£):</label>
+      <input type="number" id="askingPrice" placeholder="e.g 500,000" />
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top:20px; margin-bottom:10px;">
+        <span style="font-weight:bold">Our Agency</span>
+        <span style="font-weight:bold">Other Agent</span>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comparison-col">
+          <label for="ourPercentAchieved">% of asking price achieved</label>
+          <input type="number" id="ourPercentAchieved" placeholder="" />
+        </div>
+        <div class="comparison-col">
+          <label for="otherPercentAchieved">% of asking price achieved</label>
+          <input type="number" id="otherPercentAchieved" placeholder="" />
+        </div>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comparison-col">
+          <label>Likely Sales Price</label>
+          <input type="text" id="ourLikelyPrice" readonly />
+        </div>
+        <div class="comparison-col">
+          <label>Likely Sales Price</label>
+          <input type="text" id="otherLikelyPrice" readonly />
+        </div>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comparison-col">
+          <label for="ourFeePercent">Agent Selling Fee (%)</label>
+          <input type="number" id="ourFeePercent" placeholder="" />
+        </div>
+        <div class="comparison-col">
+          <label for="otherFeePercent">Agent Selling Fee (%)</label>
+          <input type="number" id="otherFeePercent" placeholder="" />
+        </div>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comparison-col">
+          <label>Agent Fee (£)</label>
+          <input type="text" id="ourFeePounds" readonly />
+        </div>
+        <div class="comparison-col">
+          <label>Agent Fee (£)</label>
+          <input type="text" id="otherFeePounds" readonly />
+        </div>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comparison-col">
+          <label>Net Figure for Property Owner</label>
+          <input type="text" id="ourNetFigure" readonly />
+        </div>
+        <div class="comparison-col">
+          <label>Net Figure for Property Owner</label>
+          <input type="text" id="otherNetFigure" readonly />
+        </div>
+      </div>
+
+      <div class="comparison-result" id="extraPocket">£0.00</div>
+      <div class="comparison-caption" id="extraPocketCaption">Extra in YOUR Pocket</div>
+      <button onclick="calculateComparison()">Calculate</button>
+      <button onclick="resetComparison()">Reset Form</button>
+    </div>
+  </div>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Your main JS (handles everything) -->
+  <script src="script.js"></script>
+</body>
+</html>
