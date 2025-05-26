@@ -29,6 +29,12 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
 .container {
   background: var(--container-bg);
   padding: 30px 40px;
