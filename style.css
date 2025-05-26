@@ -18,15 +18,13 @@
 }
 
 body {
-   font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   background-color: var(--bg);
   margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  padding: 40px 0;
+  display: block; /* ✅ allows natural flow */
   transition: background 0.3s;
+  min-height: 100vh;
 }
 
 .container {
